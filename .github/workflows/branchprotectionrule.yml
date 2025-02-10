@@ -1,0 +1,17 @@
+name: Track Branch Protection Changes
+
+on:
+  branch_protection_rule:
+    types: [created, deleted]
+
+jobs:
+  log-changes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log event details
+        run: echo " Branch Protection Rule Event Triggered!"
+
