@@ -40,3 +40,7 @@ A Check Suite is a group of Check Runs that GitHub runs on a commit to verify co
 ✅ Unit Tests Check → Runs automated tests
 ✅ Security Scan Check → Detects vulnerabilities
 
+Create a reusable workflow that runs when called (workflow_call).
+
+The workflow_run event allows a workflow to run after another workflow completes.
+
