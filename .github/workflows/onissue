@@ -1,0 +1,20 @@
+name: On Issue Workflow
+
+on:
+  issues:
+    types: [opened, edited, closed]
+
+jobs:
+  log-issue-event:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log Issue Event Details
+        run: |
+          echo "GitHub Issue Event Triggered!"
+          echo "Event Type: ${{ github.event.action }}"
+          echo " Issue Title: ${{ github.event.issue.title }}"
+          echo " Issue Number: ${{ github.event.issue.number }}"
+          echo "Issue Author: ${{ github.event.issue.user.login }}"
+          echo "Issue State: ${{ github.event.issue.state }}"
+          echo " Repository: ${{ github.repository }}"
