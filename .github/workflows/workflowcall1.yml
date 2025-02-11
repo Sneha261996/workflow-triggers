@@ -7,9 +7,10 @@ on:
 
 jobs:
   call-reusable-workflow:
-    uses: ./.github/workflows/reusable-push-workflow.yml
+    uses: Sneha261996/workflow-triggers/.github/workflows/reusable-push-workflow.yml@main  
     with:
       branch: ${{ github.ref }}
       commit_message: ${{ github.event.head_commit.message }}
     secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      token: ${{ secrets.GITHUB_TOKEN }}
+
