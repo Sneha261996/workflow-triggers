@@ -11,6 +11,3 @@ jobs:
     with:
       branch: ${{ github.ref }}
       commit_message: ${{ github.event.head_commit.message }}
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
-
