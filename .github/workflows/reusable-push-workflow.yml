@@ -1,0 +1,30 @@
+name: Reusable Push Workflow
+
+on:
+  workflow_call:
+    inputs:
+      branch:
+        description: "Branch where the push happened"
+        required: true
+        type: string
+      commit_message:
+        description: "Commit message of the push"
+        required: false
+        type: string
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+
+jobs:
+  log-push-event:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Log Push Details
+        run: |
+          echo "Reusable Workflow Triggered on Push!"
+          echo "Branch: ${{ inputs.branch }}"
+          echo " Commit Message: ${{ inputs.commit_message }}"
