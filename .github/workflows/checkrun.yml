@@ -1,4 +1,4 @@
-name: Check Run Event Listener
+name: Check Run
 
 on:
   check_run:
