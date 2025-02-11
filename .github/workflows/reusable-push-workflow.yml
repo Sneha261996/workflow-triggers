@@ -11,9 +11,6 @@ on:
         description: "Commit message of the push"
         required: false
         type: string
-    secrets:
-      GITHUB_TOKEN:
-        required: true
 
 jobs:
   log-push-event:
@@ -27,4 +24,4 @@ jobs:
         run: |
           echo "Reusable Workflow Triggered on Push!"
           echo "Branch: ${{ inputs.branch }}"
-          echo " Commit Message: ${{ inputs.commit_message }}"
+          echo "Commit Message: ${{ inputs.commit_message }}"
