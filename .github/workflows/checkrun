@@ -1,0 +1,18 @@
+name: Check Run Event Listener
+
+on:
+  check_run:
+    types: [created, completed]
+
+jobs:
+  log-check-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log Check Run Details
+        run: |
+          echo "Check Run Event Triggered!"
+          echo "Action: ${{ github.event.action }}"
+          echo "Check Run Name: ${{ github.event.check_run.name }}"
+          echo "Status: ${{ github.event.check_run.status }}"
+          echo "Conclusion: ${{ github.event.check_run.conclusion }}"
