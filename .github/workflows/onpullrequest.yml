@@ -1,0 +1,25 @@
+name: On Pull Request Workflow
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main  
+
+jobs:
+  log-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Log Pull Request Details
+        run: |
+          echo " Pull Request Event Triggered!"
+          echo " PR Title: ${{ github.event.pull_request.title }}"
+          echo " PR Number: ${{ github.event.pull_request.number }}"
+          echo "Author: ${{ github.event.pull_request.user.login }}"
+          echo "Base Branch: ${{ github.event.pull_request.base.ref }}"
+          echo "Head Branch: ${{ github.event.pull_request.head.ref }}"
+          echo "Repository: ${{ github.repository }}"
