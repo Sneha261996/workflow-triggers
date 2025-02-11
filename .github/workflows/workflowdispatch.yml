@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  log-push-event:
+  log-event:
     runs-on: ubuntu-latest
 
     steps:
