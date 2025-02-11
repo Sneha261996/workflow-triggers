@@ -1,0 +1,22 @@
+name: On Push Workflow
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  log-push-event:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Log Push Event Details
+        run: |
+          echo "Code Pushed to Repository!"
+          echo "Committer: ${{ github.actor }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit Message: ${{ github.event.head_commit.message }}"
+          echo "Repository: ${{ github.repository }}"
