@@ -1,0 +1,21 @@
+name: Workflow Run Listener
+
+on:
+  workflow_run:
+    workflows: ["Main Workflow (Trigger)"]  
+    types:
+      - completed  
+    branches:
+      - main
+
+jobs:
+  run-on-workflow-completion:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'  
+
+    steps:
+      - name: Log Workflow Run Details
+        run: |
+          echo " Workflow Run Triggered!"
+          echo " Workflow Name: ${{ github.event.workflow_run.name }}"
+          echo " Status: ${{ github.event.workflow_run.conclusion }}"
