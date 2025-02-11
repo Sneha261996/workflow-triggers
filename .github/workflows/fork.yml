@@ -1,0 +1,32 @@
+name: On Push and Fork Workflow
+
+on:
+  push:
+    branches:
+      - main  
+  fork:  
+
+jobs:
+  log-event:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository (Only for Push Event)
+        if: github.event_name == 'push'
+        uses: actions/checkout@v3
+
+      - name: Log Push Event Details
+        if: github.event_name == 'push'
+        run: |
+          echo " Code Pushed to Repository!"
+          echo "Committer: ${{ github.actor }}"
+          echo "Branch: ${{ github.ref }}"
+          echo " Commit Message: ${{ github.event.head_commit.message }}"
+          echo "Repository: ${{ github.repository }}"
+
+      - name: Log Fork Event Details
+        if: github.event_name == 'fork'
+        run: |
+          echo "Repository Forked!"
+          echo "Forked by: ${{ github.actor }}"
+          echo "Repository: ${{ github.repository }}"
