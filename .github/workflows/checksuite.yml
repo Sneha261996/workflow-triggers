@@ -1,0 +1,19 @@
+name: Check Suite Listener
+
+on:
+  check_suite:
+    types: [requested, completed]
+
+jobs:
+  log-check-suite:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log Check Suite Details
+        run: |
+          echo "Check Suite Event Triggered!"
+          echo "Action: ${{ github.event.action }}"
+          echo "Status: ${{ github.event.check_suite.status }}"
+          echo "Conclusion: ${{ github.event.check_suite.conclusion }}"
+          echo "Head SHA: ${{ github.event.check_suite.head_sha }}"
+          echo "Repository: ${{ github.repository }}"
